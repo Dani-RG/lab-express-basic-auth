@@ -80,5 +80,13 @@ router.get('/login', function (req, res, next) {
       }
     });
   });
+
+  router.get('/main', isLoggedIn, (req, res, next) => {
+    res.render('main', req.session.currentuser);
+  });
+  
+  router.get('/private', isLoggedIn, (req, res, next) => {
+    res.render('private', req.session.currentuser);
+  });
   
   module.exports = router;
